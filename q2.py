@@ -3,17 +3,22 @@ import matplotlib.pyplot as plt
 def graphSnowfall(t):
   """ Retrieves data from text file and displays information as a bar graph """
   range = ["0-10", "11-20", "21-30", "31-40", "41-50"]
+  #initializes a list to count occurences for each range
   count = [0] * len(range)
   
   with open(t, 'r') as f:
     for line in f:
-      c = int(line)
+      amount = int(line)
       for i, r in enumerate (ranges):
+        #The loop gets an element from range then splits it from '-' and converts it to int type
         lowerLimit, upperLimit = map(int, r.split('-'))
-        if lowerLimit <= c <= upperlimit:
-          count[i0] += 1
+        #This if statement checks whether the number is between the upper and lower limits or not
+        #and then increments it by 1.
+        if lowerLimit <= amount <= upperlimit:
+          count[i] += 1
           break
 
+    #creating a bar graph using Matplotlib
    fig, ax = plt.subplots()
     # takes x-axis and y-axis
     ax.bar(ranges, counts)
